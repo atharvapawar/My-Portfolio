@@ -11,6 +11,7 @@ body {
     padding-top: 60px;
 }
 
+/* Container */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -20,7 +21,7 @@ body {
 /* Navbar Styling */
 nav {
     background: #333;
-    padding: 0px 0;
+    padding: 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -31,6 +32,11 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    transition: all 0.3s ease;
+}
+
+nav ul.hidden {
+    display: none;
 }
 
 nav ul li {
@@ -47,29 +53,43 @@ nav ul li a:hover {
     color: #0073e6;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.hamburger.active + ul {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Header Section */
 header {
     background: #444;
     color: #fff;
-    padding: 200px 0;
+    padding: 150px 0;
     text-align: center;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 section {
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
 h2 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
@@ -80,7 +100,7 @@ h2 {
     border-radius: 50%;
 }
 
-/* Skills and Projects Section */
+/* Skills, Projects and Achievements Section */
 #skills ul,
 #projects ul,
 #achievements ul {
@@ -141,9 +161,18 @@ footer {
 }
 
 /* Responsive Design */
+
+/* Mobile-first (small screens) */
 @media (max-width: 768px) {
+    /* Hamburger icon visible on small screens */
+    .hamburger {
+        display: block;
+    }
+
+    /* Navbar becomes vertical on mobile */
     nav ul {
         flex-direction: column;
+        display: none;
     }
 
     nav ul li {
@@ -152,5 +181,75 @@ footer {
 
     .profile-photo {
         max-width: 100px;
+    }
+
+    .project {
+        margin: 10px 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* Tablet and Small Desktop (medium screens) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    nav ul {
+        justify-content: space-between;
+    }
+
+    nav ul li a {
+        font-size: 1.1rem;
+    }
+
+    .project {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Desktop (large screens) */
+@media (min-width: 1025px) {
+    /* Navbar fully expanded on desktop */
+    nav ul {
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 3.5rem;
+    }
+
+    header p {
+        font-size: 1.5rem;
+    }
+
+    .profile-photo {
+        max-width: 150px;
+    }
+
+    .project {
+        padding: 20px;
+        margin: 20px 0;
     }
 }
