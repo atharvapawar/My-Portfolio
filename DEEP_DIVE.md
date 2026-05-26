@@ -3,6 +3,7 @@
 This document explains the repository in depth so any developer or AI can understand, run, and extend it.
 
 **Tech stack**
+
 - Framework: React 18 + TypeScript
 - Bundler/dev server: Vite
 - Styling: Tailwind CSS + PostCSS + Autoprefixer
@@ -72,6 +73,7 @@ npm run format
 ## Key Configuration Notes
 
 ### package.json scripts
+
 - `dev`: Starts `vite` dev server using `vite.config.ts`. Environment variable `PORT` is respected.
 - `build`: Runs `vite build` and outputs to `dist/`.
 - `serve`: Runs `vite preview` to serve the production build.
@@ -79,6 +81,7 @@ npm run format
 - `format`: Runs Prettier for formatting.
 
 ### vite.config.ts
+
 - `basePath` can be supplied via `BASE_PATH` env var for hosting under a subpath.
 - Server listens on `0.0.0.0` so it is accessible on the LAN.
 - Aliases: `@` -> `src/` (use `import ... from '@/components/Foo'`).
@@ -87,6 +90,7 @@ npm run format
 - Build output: `dist/` (configurable via `outDir`).
 
 ### tsconfig.json
+
 - `jsx` is set to `react-jsx` (modern JSX transform).
 - Path mapping: `@/*` -> `./src/*`.
 - `noEmit: true` for dev typechecking only.
@@ -102,6 +106,7 @@ High-level: the app is a single page React app composed of small presentational 
 - `index.css` — Tailwind utilities + app global styles.
 
 ### components/
+
 - `ErrorBoundary.tsx` — React error boundary to catch rendering errors.
 - `Footer.tsx` — Site footer UI.
 - `Hero.tsx` — Landing hero section component.
@@ -110,18 +115,22 @@ High-level: the app is a single page React app composed of small presentational 
 - `Timeline.tsx` — Timeline UI component for roadmap or history visualization.
 
 ### pages/
+
 - `HRView.tsx` — A route/view presumably for HR or private viewing (name suggests restricted access).
 - `PrivateView.tsx` — A protected/private page that is likely guarded by `PasswordGate`.
 - `not-found.tsx` — 404 page/route for unmatched URLs.
 
 ### data/
+
 - `portfolio.ts` — Static or semi-static data used to render portfolio items. Contains structure like project titles, URLs, descriptions, tags.
 - `roadmap.ts` — Roadmap/roadmap phases data used by `Timeline` / `PhaseCard`.
 
 ### types/
+
 - `replit.d.ts` — Ambient types used when running on Replit (optional runtime types).
 
 ### utils/
+
 - `logger.ts` — Lightweight logging helper used across the app.
 
 ---
@@ -141,6 +150,7 @@ High-level: the app is a single page React app composed of small presentational 
 - `NODE_ENV` — Standard Node environment variable used by plugins and build tools.
 
 Deployment artifacts and recommended targets:
+
 - `dist/` is produced by `npm run build`.
 - `netlify.toml` and `vercel.json` include configuration hints for those platforms; adjust `base`/`redirects` as necessary.
 
@@ -149,6 +159,7 @@ Deployment artifacts and recommended targets:
 ## Troubleshooting
 
 Common issues and fixes:
+
 - "Port already in use": set `PORT` env var or close the occupying process.
 - Missing modules / failing startup: run `npm install` and ensure `node_modules` is present. If problems persist, remove `node_modules` and `package-lock.json`, then `npm install` again.
 - Type errors reported by `tsc`: run `npm run typecheck` to see errors. Fix or loosen types in `tsconfig.json` if necessary.
@@ -227,7 +238,7 @@ Pro tip: Use `npm-check-updates` (`npx ncu -u`) to bump dependency versions in `
 ---
 
 If you'd like, I can:
+
 - Open any file and annotate it inline with comments explaining logic.
 - Add automated tests and a minimal CI workflow.
 - Harden TypeScript settings and apply `eslint --fix` and `prettier` formatting in a PR.
-
